@@ -1,0 +1,45 @@
+https://www.youtube.com/watch?v=KerNf0NANMo
+
+From https://github.com/darshilparmar/stock-market-kafka-data-engineering-project/blob/main/command_kafka.txt
+
+
+wget https://downloads.apache.org/kafka/3.7.0/kafka_2.12-3.7.0.tgz
+tar -xvf kafka_2.12-3.7.0.tgz
+
+
+sudo yum install java-17-amazon-corretto.x86_64
+java --version
+cd kafka_2.12-3.7.0
+
+
+ Socket server failed to bind to  Cannot assign requested address
+
+
+
+export KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
+
+
+
+bin/kafka-topics.sh --create --topic demo_testing2 --bootstrap-server {Put the Public IP of your EC2 Instance:9092} --replication-factor 1 --partitions 1
+
+bin/kafka-topics.sh --create --topic stock-market --bootstrap-server localhost:9092
+
+
+
+Start Producer:
+--------------------------
+bin/kafka-console-producer.sh --topic stock-market --bootstrap-server {Put the Public IP of your EC2 Instance:9092} 
+bin/kafka-console-producer.sh --topic stock-market --bootstrap-server localhost:9092
+
+Start Consumer:
+-------------------------
+Duplicate the session & enter in a new console --
+cd kafka_2.12-3.3.1
+bin/kafka-console-consumer.sh --topic stock-market --bootstrap-server {Put the Public IP of your EC2 Instance:9092}
+
+bin/kafka-console-consumer.sh --topic stock-market-kafka-data-engineering-project --bootstrap-server localhost:9092
+
+
+
+jupyter notebook
+
